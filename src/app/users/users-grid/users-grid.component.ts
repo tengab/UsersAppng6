@@ -23,9 +23,9 @@ export class UsersGridComponent implements OnInit {
 
     this.gridOptions.onGridReady = (params) => {
       params.api.sizeColumnsToFit()
-    }
-    this.gridOptions.suppressHorizontalScroll = true
-    this.gridOptions.rowHeight = 50
+    };
+    this.gridOptions.suppressHorizontalScroll = true;
+    this.gridOptions.rowHeight = 50;
 
     this.gridOptions.columnDefs = [
       {
@@ -64,9 +64,8 @@ export class UsersGridComponent implements OnInit {
     return thumbnailImage
   }
 
-  lastNameCellRenderer(params){
-    console.log(params.data.login.uuid)
-    const lastNameCell = `<a href='#', ">${params.data.name.last}<a/>`
+  lastNameCellRenderer(params) {
+    const lastNameCell = `<a href="/user-details/${params.data.login.uuid}">${params.data.name.last}</a>`
     return lastNameCell
   }
 
@@ -74,7 +73,7 @@ export class UsersGridComponent implements OnInit {
     this.isGridVisible = !this.isGridVisible
   }
 
-   ngOnInit() {
+  ngOnInit() {
     this.usersService.getUsers()
       .subscribe(response => {
         this.userList = response.results;

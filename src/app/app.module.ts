@@ -4,17 +4,23 @@ import { AgGridModule } from "ag-grid-angular";
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { UsersGridComponent } from './users-grid/users-grid.component';
+import { UsersGridComponent } from './users/users-grid/users-grid.component';
+import { AppRoutingModule } from './app-routing.module';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersGridComponent
+    UsersGridComponent,
+    UserDetailsComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AgGridModule.withComponents([])
+    AgGridModule.withComponents([]),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
