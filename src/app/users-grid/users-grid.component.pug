@@ -1,0 +1,7 @@
+.panel.panel-default
+  .panel-heading.heading-to-hide
+    h3.panel-title
+      strong Users
+    button.glyphicon((click)='hideGrid()', [ngClass]='isGridVisible ? "glyphicon-chevron-up" : "glyphicon-chevron-down"')
+  div.collapse(style='width: 100%;', [ngClass]='isGridVisible ? "in" : ""')
+    ag-grid-angular.ag-theme-balham(style='height: 350px;', [gridOptions]='gridOptions')
