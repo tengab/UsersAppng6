@@ -8,13 +8,19 @@ import { UsersGridComponent } from './users/users-grid/users-grid.component';
 import { AppRoutingModule } from './app-routing.module';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UsersComponent } from './users/users.component';
+import { RouterLinkRendererComponent } from './users/users-grid/router-link-renderer.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersGridComponent,
     UserDetailsComponent,
-    UsersComponent
+    UsersComponent,
+    RouterLinkRendererComponent,
+  ],
+  entryComponents: [
+    RouterLinkRendererComponent
   ],
   imports: [
     BrowserModule,

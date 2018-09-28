@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-
+import {UsersService} from "../users/users-grid/users.service";
 
 @Component({
   selector: 'app-user-details',
@@ -9,16 +9,22 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class UserDetailsComponent implements OnInit {
 
-  fetchedUsedId: string
+  public fetchedUserId: string
 
-  constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe( params => {
-      this.fetchedUsedId = params.id
-      console.log(this.fetchedUsedId)
+
+
+  constructor(private route: ActivatedRoute,
+              public usersService: UsersService) {
+
+    this.route.params.subscribe(params => {
+      this.fetchedUserId = params.id
+      console.log('feczet', this.fetchedUserId)
     });
+    console.log('from user-details', this.usersService.userList)
   }
 
   ngOnInit() {
+    console.log('from user-details', this.usersService.userList)
   }
 
 }
