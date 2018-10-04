@@ -4,8 +4,9 @@ import {UserDetailsComponent} from './user-details/user-details.component'
 import {UsersGridComponent} from "./users/users-grid/users-grid.component";
 
 const routes: Routes = [
+  {path: '', redirectTo: '/users', pathMatch: 'full'},
   {path: 'user-details/:id', component: UserDetailsComponent},
-  {path: '', component: UsersGridComponent},
+  {path: 'users', component: UsersGridComponent},
 ];
 
 @NgModule({

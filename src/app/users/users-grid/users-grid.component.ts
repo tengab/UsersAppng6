@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GridOptions} from "ag-grid-community";
 import {UsersService} from "./users.service";
-import { Router } from '@angular/router';
+import * as _ from 'lodash';
 import {RouterLinkRendererComponent} from "./router-link-renderer.component";
 
 
@@ -12,9 +12,10 @@ import {RouterLinkRendererComponent} from "./router-link-renderer.component";
 })
 export class UsersGridComponent implements OnInit {
 
-  private gridOptions: GridOptions;
+  public gridOptions: GridOptions;
   private isGridVisible: boolean = true;
-  public userList: any;
+
+  // public userList: any = []
 
   constructor(public usersService: UsersService) {
 
@@ -50,9 +51,14 @@ export class UsersGridComponent implements OnInit {
         {
           headerName: "Nationality",
           field: "nat",
+        },
+        {
+          headerName: "Delete",
+          field: "login.uuid",
+          cellRenderer: this.deleteUserCell
         }
       ],
-      rowData: this.userList,
+
       onGridReady: (params) => {
         params.api.sizeColumnsToFit();
       }
@@ -62,11 +68,21 @@ export class UsersGridComponent implements OnInit {
   ngOnInit() {
     this.usersService.getUsers()
       .subscribe(response => {
-        this.userList = response.results;
-        this.gridOptions.api.setRowData(this.userList)
-        this.usersService.userList = response.results
-        console.log('from users-grid', this.usersService.userList)
+        this.gridOptions.api.setRowData(this.usersService.userList)
       })
+  }
+
+  deleteUserCell(params) {
+    const deleteButton = `<div class="glyphicon glyphicon-trash"></div>`
+    return deleteButton
+  }
+
+  onCellClicked(event) {
+    if (event.value === event.data.login.uuid) {
+      this.usersService.deleteUser(event).subscribe(response => {
+        this.gridOptions.api.setRowData(this.usersService.userList)
+      })
+    }
   }
 
   imageCellRenderer(params) {

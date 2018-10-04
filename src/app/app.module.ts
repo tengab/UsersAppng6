@@ -18,9 +18,11 @@ import { RouterLinkRendererComponent } from './users/users-grid/router-link-rend
     UserDetailsComponent,
     UsersComponent,
     RouterLinkRendererComponent,
+
   ],
   entryComponents: [
-    RouterLinkRendererComponent
+    RouterLinkRendererComponent,
+
   ],
   imports: [
     BrowserModule,
