@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UsersComponent } from './users/users.component';
 import { RouterLinkRendererComponent } from './users/users-grid/router-link-renderer.component';
+import { UserInfoComponent } from './user-details/user-info/user-info.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { RouterLinkRendererComponent } from './users/users-grid/router-link-rend
     UserDetailsComponent,
     UsersComponent,
     RouterLinkRendererComponent,
+    UserInfoComponent,
 
   ],
   entryComponents: [

@@ -79,9 +79,10 @@ export class UsersGridComponent implements OnInit {
 
   onCellClicked(event) {
     if (event.value === event.data.login.uuid) {
-      this.usersService.deleteUser(event).subscribe(response => {
-        this.gridOptions.api.setRowData(this.usersService.userList)
-      })
+      this.usersService.deleteUser(event)
+        .subscribe(response => {
+          this.gridOptions.api.setRowData(this.usersService.userList)
+        })
     }
   }
 

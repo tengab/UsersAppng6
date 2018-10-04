@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {UsersService} from "../users/users-grid/users.service";
+import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-user-details',
@@ -10,21 +12,19 @@ import {UsersService} from "../users/users-grid/users.service";
 export class UserDetailsComponent implements OnInit {
 
   public fetchedUserId: string
-
+  public fetchedUser: Object
 
 
   constructor(private route: ActivatedRoute,
               public usersService: UsersService) {
-
     this.route.params.subscribe(params => {
       this.fetchedUserId = params.id
-      console.log('feczet', this.fetchedUserId)
     });
-    console.log('from user-details', this.usersService.userList)
+
   }
 
   ngOnInit() {
-    console.log('from user-details', this.usersService.userList)
+    this.fetchedUser = _.find(this.usersService.userList, user => user.login.uuid === this.fetchedUserId)
   }
 
 }
