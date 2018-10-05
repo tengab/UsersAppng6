@@ -9,9 +9,7 @@ export class UserBuilderService {
   user: any = {}
 
   constructor() {
-
   }
-
 
   mapUser(backendUser) {
 

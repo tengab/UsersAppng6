@@ -3,31 +3,32 @@ import {HttpClient} from '@angular/common/http';
 import {map} from "rxjs/operators";
 import * as _ from 'lodash';
 import {UserBuilderService} from "./user-builder.service";
+import {IUser} from "../../iuser";
+import {IId} from "../../iid";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
 
-  userList: any = [];
+  userList: IUser[] = [];
 
   constructor(private http: HttpClient,
               public userBuilder: UserBuilderService) {
   }
 
-
   getUsers() {
-    return this.http.get<any>('http://localhost:3000/users')
+    return this.http.get<IUser[]>('http://localhost:3000/users')
       .pipe(
         map(response => {
-          this.userList = response.map( user => this.userBuilder.mapUser(user));
+          this.userList = response.map(user => this.userBuilder.mapUser(user));
           return this.userList;
         }),
       )
   }
 
   deleteUser(event) {
-    return this.http.delete<any>(`http://localhost:3000/users/${event.data.login.uuid}`)
+    return this.http.delete<IId>(`http://localhost:3000/users/${event.data.login.uuid}`)
       .pipe(
         map(response => {
           _.remove(this.userList, user => user.login.uuid === response.id);
