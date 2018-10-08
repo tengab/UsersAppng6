@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core';
 import * as _ from 'lodash';
+import {CountriesService} from "../countries.service";
+import {IUser} from "../iuser";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserBuilderService {
 
-  user: any = {}
+  user: IUser
 
-  constructor() {
+  constructor(public countries: CountriesService) {
   }
 
   mapUser(backendUser) {
@@ -63,7 +65,8 @@ export class UserBuilderService {
         medium: backendUser.picture.medium,
         thumbnail: backendUser.picture.thumbnail
       },
-      nat: backendUser.nat
+      nat: backendUser.nat,
+      natFullName: this.countries.getCountryFullName(backendUser.nat)
     }
 
     return this.user

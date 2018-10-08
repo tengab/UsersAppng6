@@ -3,8 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {map} from "rxjs/operators";
 import * as _ from 'lodash';
 import {UserBuilderService} from "./user-builder.service";
-import {IUser} from "../../iuser";
-import {IId} from "../../iid";
+import {IUser} from "../iuser";
+import {IId} from "../iid";
 
 @Injectable({
   providedIn: 'root'

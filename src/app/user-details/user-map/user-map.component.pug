@@ -1,0 +1,15 @@
+.panel.panel-default
+  .panel-heading.heading-to-hide
+    h3.panel-title
+      strong Location
+    button.glyphicon([ngClass]="isMapVisible ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'", (click)='hideMap()')
+  .collapse([ngClass]="isMapVisible ? 'in' : ''")
+    .panel-body(*ngIf = "fetchedUser")
+      agm-map([latitude]= 0, [longitude] = 0, [zoom]="1")
+        agm-marker(
+        [latitude]="fetchedUser.location.coordinates.latitude",
+        [longitude] = "fetchedUser.location.coordinates.longitude",
+        )
+          agm-info-window
+            | DUPA
+

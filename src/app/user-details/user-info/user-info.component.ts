@@ -11,11 +11,7 @@ export class UserInfoComponent implements OnInit {
   @Input() fetchedUser;
   @Input() fetchedUserId
 
-
-
   private isInfoVisible: boolean = true;
-
-
   constructor() {
 
   }

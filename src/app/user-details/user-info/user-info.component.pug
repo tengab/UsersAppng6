@@ -4,10 +4,10 @@
       strong User info
     button.glyphicon([ngClass]="isInfoVisible ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'", (click)='hideInfo()')
   .collapse([ngClass]="isInfoVisible ? 'in' : ''")
-    .panel-body
+    .panel-body(*ngIf="fetchedUser")
       .row
         .col-xs-3.row-custom-photo
-          img(src='{{fetchedUser.picture.large}}')
+          img(  [src]='fetchedUser.picture.large')
         .col-xs-5.row-custom-details
           div
             h3
@@ -20,7 +20,7 @@
             span {{fetchedUser.email}}
             div
             strong nationality:
-            span {{fetchedUser.nat}}
+            span {{fetchedUser.natFullName}}
         .col-xs-4.row-custom-searchButton
           button.btn.btn-info()
             | Search for

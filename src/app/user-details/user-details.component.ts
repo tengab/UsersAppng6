@@ -17,14 +17,14 @@ export class UserDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               public usersService: UsersService) {
-    this.route.params.subscribe(params => {
-      this.fetchedUserId = params.id
-    });
 
+    this.route.params.subscribe(params =>  this.fetchedUserId = params.id);
   }
 
   ngOnInit() {
-    this.fetchedUser = _.find(this.usersService.userList, user => user.login.uuid === this.fetchedUserId)
+    const createFetchedUser = () => this.fetchedUser = _.find(this.usersService.userList, user => user.login.uuid === this.fetchedUserId)
+
+    this.usersService.userList.length ? createFetchedUser() : this.usersService.getUsers().subscribe(() => createFetchedUser())
   }
 
 }

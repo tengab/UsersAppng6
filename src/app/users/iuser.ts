@@ -48,5 +48,6 @@ export interface IUser {
     medium: string,
     thumbnail: string
   },
-  nat: string
+  nat: string,
+  natFullName: string
 }

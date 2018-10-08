@@ -15,8 +15,6 @@ export class UsersGridComponent implements OnInit {
   public gridOptions: GridOptions;
   private isGridVisible: boolean = true;
 
-  // public userList: any = []
-
   constructor(public usersService: UsersService) {
 
     this.gridOptions = {
@@ -50,7 +48,7 @@ export class UsersGridComponent implements OnInit {
         },
         {
           headerName: "Nationality",
-          field: "nat",
+          field: "natFullName",
         },
         {
           headerName: "Delete",
