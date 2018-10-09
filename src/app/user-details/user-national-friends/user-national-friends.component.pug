@@ -1,0 +1,23 @@
+.panel.panel-default
+  .panel-heading.heading-to-hide
+    h3.panel-title(*ngIf="fetchedUser")
+      strong Friends from {{fetchedUser.natFullName}}
+    button.glyphicon([ngClass]="isNationalFriendsVisible ? 'glyphicon-chevron-up' : 'glyphicon-chevron-down'", (click)='hideNationalFriends()')
+  .collapse([ngClass]="isNationalFriendsVisible ? 'in' : ''")
+    .panel-body
+      .friends-list.col-xs-12
+        ul.nav.nav-tabs
+          li(*ngFor="let friend of nationalFriends.nationalFriendsList; let index = index",
+          onclick="event.preventDefault()",
+          [ngClass]="index == nationalFriends.indexOfActiveNationalFriend ? 'active' : null")
+            a((click)='clickedFriend(index)')
+              img([src]='friend.picture.thumbnail')
+    .tab-content.friend-details()
+      .tab-pane.active(*ngIf='nationalFriends.indexOfActiveNationalFriend')
+        div.chosen-friend-panel([hidden]='nationalFriends.indexOfActiveNationalFriend === null')
+          h4
+            strong {{nationalFriends.nationalFriendsList[nationalFriends.indexOfActiveNationalFriend].name.title}} {{nationalFriends.nationalFriendsList[nationalFriends.indexOfActiveNationalFriend].name.first}} {{nationalFriends.nationalFriendsList[nationalFriends.indexOfActiveNationalFriend].name.last}}
+          div
+            span {{nationalFriends.nationalFriendsList[nationalFriends.indexOfActiveNationalFriend].phone}}
+          button.btn.btn-default((click)='showDialogWithNationalFriend(nationalFriends.nationalFriendsList[nationalFriends.indexOfActiveNationalFriend])')
+            | MORE INfo

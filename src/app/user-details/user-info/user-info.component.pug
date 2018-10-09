@@ -7,7 +7,7 @@
     .panel-body(*ngIf="fetchedUser")
       .row
         .col-xs-3.row-custom-photo
-          img(  [src]='fetchedUser.picture.large')
+          img([src]='fetchedUser.picture.large')
         .col-xs-5.row-custom-details
           div
             h3
@@ -22,7 +22,7 @@
             strong nationality:
             span {{fetchedUser.natFullName}}
         .col-xs-4.row-custom-searchButton
-          button.btn.btn-info()
+          button.btn.btn-info((click)='searchForFriends()')
             | Search for
             br
             | national

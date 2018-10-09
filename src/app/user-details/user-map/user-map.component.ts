@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {NationalFriendsService} from "../user-national-friends/national-friends.service";
 
 @Component({
   selector: 'app-user-map',
@@ -13,13 +14,17 @@ export class UserMapComponent implements OnInit {
   private isMapVisible: boolean = true;
 
 
-  constructor() { }
+  constructor(public nationalFriends: NationalFriendsService) { }
 
   ngOnInit() {
   }
 
   hideMap() {
     this.isMapVisible = !this.isMapVisible
+  }
+
+  clickFromMarker(index) {
+    this.nationalFriends.indexOfActiveNationalFriend = index
   }
 
 

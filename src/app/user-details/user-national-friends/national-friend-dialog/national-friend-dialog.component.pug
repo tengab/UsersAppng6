@@ -1,0 +1,17 @@
+mat-dialog-content
+  .panel.panel-info
+    .panel-body.dialog-container
+      .picture
+        img([src]='data.picture.large')
+      h3 {{data.name.title}} {{data.name.first}} {{data.name.last}}
+      h5 Street: {{data.location.street}}
+      h5 City: {{data.location.city}}
+      h5 State: {{data.location.state}}
+      h5 Postcode: {{data.location.postcode}}
+      h5 Country: {{data.natFullName}}
+      hr
+      h5 Phone number: {{data.phone}}
+      h5 E-mail: {{data.email}}
+mat-dialog-actions
+  button.btn.btn-warning((click)='onNoClick()')
+    | Close

@@ -9,7 +9,12 @@
         agm-marker(
         [latitude]="fetchedUser.location.coordinates.latitude",
         [longitude] = "fetchedUser.location.coordinates.longitude",
+        [iconUrl] = "'/assets/images/markers/fetchedUserMarker.png'"
         )
-          agm-info-window
-            | DUPA
+        agm-marker(*ngFor='let friend of nationalFriends.nationalFriendsList; let index = index',
+        [latitude]="friend.location.coordinates.latitude",
+        [longitude] = "friend.location.coordinates.longitude",
+        [iconUrl] = "index === nationalFriends.indexOfActiveNationalFriend ? '/assets/images/markers/activeFriendMarker.png' : '/assets/images/markers/friendsMarker.png'",
+        (markerClick)='clickFromMarker(index)'
+        )
 
